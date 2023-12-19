@@ -93,5 +93,27 @@ namespace RepoPilot.Core
                 Console.WriteLine($"Error listing contents: {e.Message}");
             }
         }
+
+        public static void ChangeDirectory(ref string currentDirectory, string[] args)
+        {
+            if (args.Length < 2)
+            {
+                Console.WriteLine("Usage: cd <directory>");
+                return;
+            }
+
+            string path = args[1];
+
+            string newDirectory = Path.GetFullPath(Path.Combine(currentDirectory, path));
+
+            if (Directory.Exists(newDirectory))
+            {
+                currentDirectory = newDirectory;
+            }
+            else
+            {
+                Console.WriteLine($"Directory '{newDirectory}' does not exist.");
+            }
+        }
     }
 }
