@@ -1,4 +1,5 @@
 ﻿using RepoPilot.Utils;
+using System.Diagnostics;
 
 namespace RepoPilot.Core
 {
@@ -42,8 +43,44 @@ namespace RepoPilot.Core
         private void SaveCommandHistory()
         {
             File.WriteAllLines(_historyFilePath, _commandHistory);
+
             Console.WriteLine("\n Command History **Saved**");
             Console.WriteLine("\n Good Bye! \n");
+        }
+
+        private void RunExternalCommand(string command, string arguments)
+        {
+            var process = new Process()
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = command,
+                    Arguments = arguments,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                }
+            };
+
+            process.Start();
+
+            string output = process.StandardOutput.ReadToEnd();
+
+            string error = process.StandardError.ReadToEnd();
+
+            process.WaitForExit();
+
+            if (!string.IsNullOrEmpty(output))
+            {
+                Console.WriteLine($"\n{output}");
+            }
+            if (!string.IsNullOrEmpty(error))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(error);
+                Console.ResetColor();
+            }
         }
 
         public void Run()
@@ -97,7 +134,7 @@ namespace RepoPilot.Core
                         ConsoleUtils.PrintBanner();
                         break;
                     case "git":
-                       
+                        RunExternalCommand("git", string.Join(' ', commandArgs.Skip(1)));
                         break;
                     case "alias":
                         
