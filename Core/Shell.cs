@@ -5,11 +5,15 @@ namespace RepoPilot.Core
     internal sealed class Shell
     {
         private string currentDirectory = Directory.GetCurrentDirectory();
+        private readonly string _historyFilePath;
         private Dictionary<string, string> _aliases;
+        private List<string> _commandHistory;
 
         internal Shell()
         {
+            _historyFilePath = "commandHistory.txt";
             _aliases = new Dictionary<string, string>();
+            _commandHistory = new List<string>();
         }
 
         private void DisplayHelp()
@@ -27,8 +31,26 @@ namespace RepoPilot.Core
             Console.WriteLine();
         }
 
+        private void LoadCommandHistory()
+        {
+            if (File.Exists(_historyFilePath))
+            {
+                _commandHistory = File.ReadAllLines(_historyFilePath).ToList();
+            }
+        }
+
+        private void SaveCommandHistory()
+        {
+            File.WriteAllLines(_historyFilePath, _commandHistory);
+            Console.WriteLine("\n Command History **Saved**");
+            Console.WriteLine("\n Good Bye! \n");
+        }
+
         public void Run()
         {
+            // Load command history from file
+            LoadCommandHistory();
+
             // Print ASCII art banner
             ConsoleUtils.PrintBanner();
 
@@ -84,7 +106,7 @@ namespace RepoPilot.Core
                         DisplayHelp();
                         break;
                     case "exit":
-                        
+                        SaveCommandHistory();
                         return;
                     default:
                         Console.WriteLine($"Command '{command}' not found. Type 'help' for commands.");
