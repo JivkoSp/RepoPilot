@@ -5,13 +5,14 @@ namespace RepoPilot.Core
 {
     internal sealed class Shell
     {
-        private string currentDirectory = Directory.GetCurrentDirectory();
+        private string _currentDirectory;
         private readonly string _historyFilePath;
         private Dictionary<string, string> _aliases;
         private List<string> _commandHistory;
 
         internal Shell()
         {
+            _currentDirectory = Directory.GetCurrentDirectory();
             _historyFilePath = "commandHistory.txt";
             _aliases = new Dictionary<string, string>();
             _commandHistory = new List<string>();
@@ -94,7 +95,7 @@ namespace RepoPilot.Core
             while (true)
             {
                 // Display the current directory
-                Console.Write($"{currentDirectory}> ");
+                Console.Write($"{_currentDirectory}> ");
 
                 // Handle tab completion
                 var input = ConsoleUtils.ReadLineWithTabCompletion();
@@ -118,7 +119,7 @@ namespace RepoPilot.Core
                 switch (command)
                 {
                     case "ls":
-                        
+                        FileSystemManager.ListDirectoryContents(_currentDirectory, commandArgs);
                         break;
                     case "cd":
                         
