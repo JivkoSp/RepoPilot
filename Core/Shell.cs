@@ -12,6 +12,21 @@ namespace RepoPilot.Core
             _aliases = new Dictionary<string, string>();
         }
 
+        private void DisplayHelp()
+        {
+            Console.WriteLine("\nAvailable commands:\n");
+            Console.WriteLine("  ls [path]              - List directory contents");
+            Console.WriteLine("  cd <directory>         - Change directory");
+            Console.WriteLine("  mkdir <dir>            - Create a new directory");
+            Console.WriteLine("  look <file>            - Display file information");
+            Console.WriteLine("  clear                  - Clear the console");
+            Console.WriteLine("  git <args>             - Run git commands");
+            Console.WriteLine("  alias <name> <command> - Create an alias");
+            Console.WriteLine("  help                   - Display this help message");
+            Console.WriteLine("  exit                   - Exit the shell");
+            Console.WriteLine();
+        }
+
         public void Run()
         {
             // Print ASCII art banner
@@ -40,8 +55,44 @@ namespace RepoPilot.Core
                     command = commandArgs[0].ToLower();
                 }
 
-
+                // Execute command based on input
+                switch (command)
+                {
+                    case "ls":
+                        
+                        break;
+                    case "cd":
+                        
+                        break;
+                    case "mkdir":
+                        
+                        break;
+                    case "look":
+                       
+                        break;
+                    case "clear":
+                        Console.Clear();
+                        ConsoleUtils.PrintBanner();
+                        break;
+                    case "git":
+                       
+                        break;
+                    case "alias":
+                        
+                        break;
+                    case "help":
+                        DisplayHelp();
+                        break;
+                    case "exit":
+                        
+                        return;
+                    default:
+                        Console.WriteLine($"Command '{command}' not found. Type 'help' for commands.");
+                        break;
+                }
             }
         }
+
+
     }
 }
