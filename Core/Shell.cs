@@ -145,7 +145,7 @@ namespace RepoPilot.Core
                         RunExternalCommand("git", string.Join(' ', commandArgs.Skip(1)));
                         break;
                     case "alias":
-                        
+                        AliasManager.HandleAliasCommand(ref _aliases, commandArgs);
                         break;
                     case "help":
                         DisplayHelp();
