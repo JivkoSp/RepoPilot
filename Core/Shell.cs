@@ -1,4 +1,5 @@
-﻿using RepoPilot.Utils;
+﻿using RepoPilot.Services;
+using RepoPilot.Utils;
 using System.Diagnostics;
 
 namespace RepoPilot.Core
@@ -16,21 +17,6 @@ namespace RepoPilot.Core
             _historyFilePath = "commandHistory.txt";
             _aliases = new Dictionary<string, string>();
             _commandHistory = new List<string>();
-        }
-
-        private void DisplayHelp()
-        {
-            Console.WriteLine("\nAvailable commands:\n");
-            Console.WriteLine("  ls [path]              - List directory contents");
-            Console.WriteLine("  cd <directory>         - Change directory");
-            Console.WriteLine("  mkdir <dir>            - Create a new directory");
-            Console.WriteLine("  look <file>            - Display file information");
-            Console.WriteLine("  clear                  - Clear the console");
-            Console.WriteLine("  git <args>             - Run git commands");
-            Console.WriteLine("  alias <name> <command> - Create an alias");
-            Console.WriteLine("  help                   - Display this help message");
-            Console.WriteLine("  exit                   - Exit the shell");
-            Console.WriteLine();
         }
 
         private void LoadCommandHistory()
@@ -84,7 +70,26 @@ namespace RepoPilot.Core
             }
         }
 
-        public void Run()
+        private void RunPilotCommand(string arguments)
+        {
+            if (string.IsNullOrEmpty(arguments))
+            {
+                Console.WriteLine("\nUsage: pilot <pilot command>");
+
+                UserInteraction.DisplayPilotHelp();
+            }
+            else
+            {
+                switch(arguments)
+                {
+                    case "create":
+
+                        break;
+                }
+            }
+        }
+
+        public async Task Run()
         {
             // Load command history from file
             LoadCommandHistory();
@@ -144,11 +149,14 @@ namespace RepoPilot.Core
                     case "git":
                         RunExternalCommand("git", string.Join(' ', commandArgs.Skip(1)));
                         break;
+                    case "pilot":
+                        RunPilotCommand(string.Join(' ', commandArgs.Skip(1)));
+                        break;
                     case "alias":
                         AliasManager.HandleAliasCommand(ref _aliases, commandArgs);
                         break;
                     case "help":
-                        DisplayHelp();
+                       UserInteraction.DisplayHelp();
                         break;
                     case "exit":
                         SaveCommandHistory();
