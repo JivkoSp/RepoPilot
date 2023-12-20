@@ -40,5 +40,48 @@ namespace RepoPilot.Services
                 Console.WriteLine($"Authentication failed: {ex.Message}");
             }
         }
+
+        public static async Task CreateRepository(string token)
+        {
+            var githubClient = new GitHubClient(new ProductHeaderValue("RepoPilot"))
+            {
+                Credentials = new Credentials(token)
+            };
+
+            string? repoName = UserInteraction.Prompt("Enter a name for the repository: ");
+
+            string? repoDescription = UserInteraction.Prompt("Optionally enter a description of the repository: ");
+
+            bool isPublic = UserInteraction.Prompt("Public or private (public/private): ")?.ToLower() == "public";
+
+            try
+            {
+                var newRepo = new NewRepository(repoName)
+                {
+                    Description = repoDescription,
+                    Private = !isPublic
+                };
+
+                var createdRepo = await githubClient.Repository.Create(newRepo);
+                Console.WriteLine($"Repository created on GitHub: {createdRepo.HtmlUrl}");
+
+                if (UserInteraction.Prompt("Do you want to create this repository locally as well? (y/n): ")?.ToLower() == "y")
+                {
+                    string? localPath = UserInteraction.Prompt("Enter the local path where you want the repository to be created: ");
+                    if (string.IsNullOrEmpty(localPath) || !Directory.Exists(Path.GetDirectoryName(localPath)))
+                    {
+                        Console.WriteLine("Invalid path specified.");
+                    }
+                    else
+                    {
+                        //LocalRepositoryManager.CreateLocalRepository(localPath, repoName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to create repository: {ex.Message}");
+            }
+        }
     }
 }
