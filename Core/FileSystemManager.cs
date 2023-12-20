@@ -115,5 +115,27 @@ namespace RepoPilot.Core
                 Console.WriteLine($"Directory '{newDirectory}' does not exist.");
             }
         }
+
+        public static void MakeDirectory(string currentDirectory, string[] args)
+        {
+            if (args.Length < 2)
+            {
+                Console.WriteLine("Usage: mkdir <directory>");
+                return;
+            }
+
+            string path = args[1];
+            string newDirectory = Path.GetFullPath(Path.Combine(currentDirectory, path));
+
+            if (!Directory.Exists(newDirectory))
+            {
+                Directory.CreateDirectory(newDirectory);
+                Console.WriteLine($"Directory '{newDirectory}' created.");
+            }
+            else
+            {
+                Console.WriteLine($"Directory '{newDirectory}' already exists.");
+            }
+        }
     }
 }
