@@ -128,7 +128,14 @@ namespace RepoPilot.Core
                         FileSystemManager.MakeDirectory(_currentDirectory, commandArgs);
                         break;
                     case "look":
-                       
+                        if (commandArgs.Length > 1)
+                        {
+                            FileSystemManager.LookCommand(commandArgs[1]);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Usage: look <file name>");
+                        }
                         break;
                     case "clear":
                         Console.Clear();
