@@ -70,7 +70,7 @@ namespace RepoPilot.Core
             }
         }
 
-        private void RunPilotCommand(string arguments)
+        private async Task RunPilotCommandAsync(string arguments)
         {
             if (string.IsNullOrEmpty(arguments))
             {
@@ -80,10 +80,20 @@ namespace RepoPilot.Core
             }
             else
             {
-                switch(arguments)
+                string token = GitHubService.GetStoredGitHubToken();
+
+                if (string.IsNullOrEmpty(token))
+                {
+                    await GitHubService.SetGitHubCredentials();
+                    token = GitHubService.GetStoredGitHubToken();
+                }
+
+                arguments = arguments.ToLower();
+
+                switch (arguments)
                 {
                     case "create":
-
+                        await GitHubService.CreateRepository(token);
                         break;
                 }
             }
@@ -150,7 +160,7 @@ namespace RepoPilot.Core
                         RunExternalCommand("git", string.Join(' ', commandArgs.Skip(1)));
                         break;
                     case "pilot":
-                        RunPilotCommand(string.Join(' ', commandArgs.Skip(1)));
+                        await RunPilotCommandAsync(string.Join(' ', commandArgs.Skip(1)));
                         break;
                     case "alias":
                         AliasManager.HandleAliasCommand(ref _aliases, commandArgs);
