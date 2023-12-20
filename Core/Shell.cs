@@ -125,7 +125,7 @@ namespace RepoPilot.Core
                         FileSystemManager.ChangeDirectory(ref _currentDirectory, commandArgs);
                         break;
                     case "mkdir":
-                        
+                        FileSystemManager.MakeDirectory(_currentDirectory, commandArgs);
                         break;
                     case "look":
                        
