@@ -122,7 +122,7 @@ namespace RepoPilot.Core
                         FileSystemManager.ListDirectoryContents(_currentDirectory, commandArgs);
                         break;
                     case "cd":
-                        
+                        FileSystemManager.ChangeDirectory(ref _currentDirectory, commandArgs);
                         break;
                     case "mkdir":
                         
