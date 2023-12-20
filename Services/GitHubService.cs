@@ -1,4 +1,5 @@
 ﻿using Octokit;
+using RepoPilot.Managers;
 
 namespace RepoPilot.Services
 {
@@ -74,7 +75,7 @@ namespace RepoPilot.Services
                     }
                     else
                     {
-                        //LocalRepositoryManager.CreateLocalRepository(localPath, repoName);
+                        LocalRepositoryManager.CreateLocalRepository(localPath, repoName);
                     }
                 }
             }
