@@ -137,5 +137,42 @@ namespace RepoPilot.Core
                 Console.WriteLine($"Directory '{newDirectory}' already exists.");
             }
         }
+
+        public static void LookCommand(string fileName)
+        {
+            if (!File.Exists(fileName))
+            {
+                Console.WriteLine($"{fileName} does not exist or is not a file.");
+                return;
+            }
+
+            var fileSize = new FileInfo(fileName).Length;
+
+            var executableExtensions = new HashSet<string> { ".exe", ".bat", ".sh", ".cmd" };
+
+            var fileExtension = Path.GetExtension(fileName).ToLower();
+
+            var isExecutable = executableExtensions.Contains(fileExtension);
+
+            var lastAccessTime = File.GetLastAccessTime(fileName);
+
+            Console.Write($"\n  File: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write($"{fileName}\n");
+            Console.ResetColor();
+            Console.Write($"  Size: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write($"{fileSize} ");
+            Console.ResetColor();
+            Console.Write($"bytes.\n");
+            Console.Write($"  Executable: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write($"{(isExecutable ? "Yes" : "No")}\n");
+            Console.ResetColor();
+            Console.Write($"  Last accessed: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write($"{lastAccessTime}\n\n");
+            Console.ResetColor();
+        }
     }
 }
