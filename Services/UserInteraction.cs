@@ -50,7 +50,7 @@ namespace RepoPilot.Services
 
         public static void DisplayCommitsHelp()
         {
-            Console.WriteLine("\nAvailable pilot branch management commands:\n");
+            Console.WriteLine("\nAvailable pilot commit management commands:\n");
             Console.WriteLine("  1. - View commit history");
             Console.WriteLine("  2. - Amend the last commit");
             Console.WriteLine("  3. - Create a signed commit");
