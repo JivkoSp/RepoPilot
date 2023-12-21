@@ -112,6 +112,9 @@ namespace RepoPilot.Core
                             Console.WriteLine("No GitHub token found. Please create a repository first.");
                         }
                         break;
+                    case "manage commits":
+                        LocalRepositoryManager.ManageCommits();
+                        break;
                 }
             }
         }
