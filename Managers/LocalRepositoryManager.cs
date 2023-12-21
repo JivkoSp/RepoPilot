@@ -1,5 +1,4 @@
-﻿
-using RepoPilot.Utils;
+﻿using RepoPilot.Utils;
 
 namespace RepoPilot.Managers
 {
@@ -10,21 +9,49 @@ namespace RepoPilot.Managers
             localPath = localPath ?? string.Empty;
 
             repoName = repoName ?? string.Empty;
-            
+
+            if (string.IsNullOrWhiteSpace(localPath))
+            {
+                Console.WriteLine("Error: Local path cannot be null or empty.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(repoName))
+            {
+                Console.WriteLine("Error: Repository name cannot be null or empty.");
+                return;
+            }
+
             string repoPath = Path.Combine(localPath, repoName);
 
             if (Directory.Exists(repoPath))
             {
-                Console.WriteLine("Directory already exists.");
-                return;
+                if (Directory.Exists(Path.Combine(repoPath, ".git")))
+                {
+                    Console.WriteLine("Error: Directory is already a Git repository.");
+                    return;
+                }
+            }
+            else
+            {
+                try
+                {
+                    Directory.CreateDirectory(repoPath);
+
+                    Console.WriteLine($"Created directory: {repoPath}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Failed to create directory: {ex.Message}");
+                    return;
+                }
             }
 
             try
             {
-                Directory.CreateDirectory(repoPath);
-                Console.WriteLine($"Initialized new repository at: {repoPath}");
-
                 GitCommandExecutor.ExecuteGitCommand("init", repoPath);
+
+                Console.WriteLine($"Initialized new Git repository at: {repoPath}");
             }
             catch (Exception ex)
             {
