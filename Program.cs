@@ -3,7 +3,7 @@ using RepoPilot.Utils;
 
 class Program
 {
-    static void Main()
+    static async Task Main()
     {
         Console.SetWindowSize(120, 40);
 
@@ -11,6 +11,6 @@ class Program
 
         var shell = new Shell();
 
-        shell.Run();
+        await shell.Run();
     }
 }
