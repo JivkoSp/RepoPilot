@@ -34,5 +34,18 @@ namespace RepoPilot.Services
             Console.WriteLine("  help                  - Display this help message");
             Console.WriteLine();
         }
+
+        public static void DisplayBranchesHelp()
+        {
+            Console.WriteLine("\nAvailable pilot branch management commands:\n");
+            Console.WriteLine("  1. - Create a new branch");
+            Console.WriteLine("  2. - List all branches (local)");
+            Console.WriteLine("  3. - List all remote branches");
+            Console.WriteLine("  4. - Switch between branches (local)");
+            Console.WriteLine("  5. - Merge branches (local)");
+            Console.WriteLine("  6. - Delete a remote branch");
+            Console.WriteLine("  7. - Back to main menu");
+            Console.WriteLine();
+        }
     }
 }
