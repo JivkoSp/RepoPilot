@@ -1,4 +1,6 @@
-﻿using RepoPilot.Services;
+﻿using Octokit;
+using RepoPilot.Managers;
+using RepoPilot.Services;
 using RepoPilot.Utils;
 using System.Diagnostics;
 
@@ -94,6 +96,21 @@ namespace RepoPilot.Core
                 {
                     case "create":
                         await GitHubService.CreateRepository(token);
+                        break;
+                    case "manage branches":
+                        if (!string.IsNullOrEmpty(token))
+                        {
+                            var githubClient = new GitHubClient(new ProductHeaderValue("RepoPilot"))
+                            {
+                                Credentials = new Credentials(token)
+                            };
+
+                            await LocalRepositoryManager.ManageBranches(githubClient);
+                        }
+                        else
+                        {
+                            Console.WriteLine("No GitHub token found. Please create a repository first.");
+                        }
                         break;
                 }
             }
