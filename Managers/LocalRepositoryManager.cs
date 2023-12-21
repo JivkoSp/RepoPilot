@@ -112,5 +112,30 @@ namespace RepoPilot.Managers
                     break;
             }
         }
+
+        public static void ManageCommits()
+        {
+            UserInteraction.DisplayCommitsHelp();
+
+            string? choice = UserInteraction.Prompt("Choose an option: ");
+
+            switch (choice)
+            {
+                case "1":
+                    GitCommandExecutor.ViewCommitHistory();
+                    break;
+                case "2":
+                    GitCommandExecutor.AmendLastCommit();
+                    break;
+                case "3":
+                    GitCommandExecutor.CreateSignedCommit();
+                    break;
+                case "4":
+                    return;
+                default:
+                    Console.WriteLine("Unknown option.");
+                    break;
+            }
+        }
     }
 }
