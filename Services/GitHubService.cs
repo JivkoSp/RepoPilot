@@ -15,6 +15,7 @@ namespace RepoPilot.Services
         public static async Task SetGitHubCredentials()
         {
             Console.Write("Enter your GitHub personal access token: ");
+
             string? token = Console.ReadLine()?.Trim();
 
             if (string.IsNullOrEmpty(token))
@@ -64,11 +65,13 @@ namespace RepoPilot.Services
                 };
 
                 var createdRepo = await githubClient.Repository.Create(newRepo);
+
                 Console.WriteLine($"Repository created on GitHub: {createdRepo.HtmlUrl}");
 
                 if (UserInteraction.Prompt("Do you want to create this repository locally as well? (y/n): ")?.ToLower() == "y")
                 {
                     string? localPath = UserInteraction.Prompt("Enter the local path where you want the repository to be created: ");
+                    
                     if (string.IsNullOrEmpty(localPath) || !Directory.Exists(Path.GetDirectoryName(localPath)))
                     {
                         Console.WriteLine("Invalid path specified.");
