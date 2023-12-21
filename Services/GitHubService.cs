@@ -14,13 +14,13 @@ namespace RepoPilot.Services
 
         public static async Task SetGitHubCredentials()
         {
-            Console.Write("Enter your GitHub personal access token: ");
+            Console.Write(" >> Enter your GitHub personal access token: ");
 
             string? token = Console.ReadLine()?.Trim();
 
             if (string.IsNullOrEmpty(token))
             {
-                Console.WriteLine("Token cannot be empty.");
+                Console.WriteLine(" >> Token cannot be empty.");
                 return;
             }
 
@@ -33,13 +33,13 @@ namespace RepoPilot.Services
             {
                 var user = await githubClient.User.Current();
 
-                Console.WriteLine($"Authenticated as {user.Login}");
+                Console.WriteLine($" >> Authenticated as {user.Login}");
 
                 File.WriteAllText(TokenFilePath, token);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Authentication failed: {ex.Message}");
+                Console.WriteLine($" >> Authentication failed: {ex.Message}");
             }
         }
 
@@ -50,11 +50,11 @@ namespace RepoPilot.Services
                 Credentials = new Credentials(token)
             };
 
-            string? repoName = UserInteraction.Prompt("Enter a name for the repository: ");
+            string? repoName = UserInteraction.Prompt(" >> Enter a name for the repository: ");
 
-            string? repoDescription = UserInteraction.Prompt("Optionally enter a description of the repository: ");
+            string? repoDescription = UserInteraction.Prompt(" >> Optionally enter a description of the repository: ");
 
-            bool isPublic = UserInteraction.Prompt("Public or private (public/private): ")?.ToLower() == "public";
+            bool isPublic = UserInteraction.Prompt(" >> Public or private (public/private): ")?.ToLower() == "public";
 
             try
             {
@@ -66,15 +66,15 @@ namespace RepoPilot.Services
 
                 var createdRepo = await githubClient.Repository.Create(newRepo);
 
-                Console.WriteLine($"Repository created on GitHub: {createdRepo.HtmlUrl}");
+                Console.WriteLine($" >> Repository created on GitHub: {createdRepo.HtmlUrl}");
 
-                if (UserInteraction.Prompt("Do you want to create this repository locally as well? (y/n): ")?.ToLower() == "y")
+                if (UserInteraction.Prompt(" >> Do you want to create this repository locally as well? (y/n): ")?.ToLower() == "y")
                 {
-                    string? localPath = UserInteraction.Prompt("Enter the local path where you want the repository to be created: ");
+                    string? localPath = UserInteraction.Prompt(" >> Enter the local path where you want the repository to be created: ");
                     
                     if (string.IsNullOrEmpty(localPath) || !Directory.Exists(Path.GetDirectoryName(localPath)))
                     {
-                        Console.WriteLine("Invalid path specified.");
+                        Console.WriteLine(" >> Invalid path specified.");
                     }
                     else
                     {
@@ -84,7 +84,7 @@ namespace RepoPilot.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to create repository: {ex.Message}");
+                Console.WriteLine($" >> Failed to create repository: {ex.Message}");
             }
         }
     }
