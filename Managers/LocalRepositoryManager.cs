@@ -1,4 +1,6 @@
-﻿using RepoPilot.Utils;
+﻿using Octokit;
+using RepoPilot.Services;
+using RepoPilot.Utils;
 
 namespace RepoPilot.Managers
 {
@@ -56,6 +58,58 @@ namespace RepoPilot.Managers
             catch (Exception ex)
             {
                 Console.WriteLine($"Failed to initialize local repository: {ex.Message}");
+            }
+        }
+
+        public static async Task ManageBranches(GitHubClient client)
+        {
+            UserInteraction.DisplayBranchesHelp();
+
+            string? choice = UserInteraction.Prompt("Choose an option: ");
+
+            switch (choice)
+            {
+                case "1":
+                    string? branchName = UserInteraction.Prompt("Enter the name of the new branch: ");
+
+                    if (!string.IsNullOrEmpty(branchName))
+                    {
+                        GitCommandExecutor.CreateBranch(branchName);
+                    }
+                    break;
+                case "2":
+                    GitCommandExecutor.ListLocalBranches();
+                    break;
+                case "3":
+                    await GitCommandExecutor.ListRemoteBranches(client);
+                    break;
+                case "4":
+                    string? switchBranch = UserInteraction.Prompt("Enter the branch to switch to: ");
+                    if (!string.IsNullOrEmpty(switchBranch))
+                    {
+                        GitCommandExecutor.SwitchBranch(switchBranch);
+                    }
+                    break;
+                case "5":
+                    string? mergeBranch = UserInteraction.Prompt("Enter the branch to merge into the current branch: ");
+                    if (!string.IsNullOrEmpty(mergeBranch))
+                    {
+                        GitCommandExecutor.MergeBranches(mergeBranch);
+                    }
+                    break;
+                case "6":
+                    string? remoteBranch = UserInteraction.Prompt("Enter the name of the remote branch to delete: ");
+                    if (!string.IsNullOrEmpty(remoteBranch))
+                    {
+                        await GitCommandExecutor.DeleteRemoteBranch(client, remoteBranch);
+                    }
+                    break;
+                case "7":
+                    // Go back to the main menu
+                    return;
+                default:
+                    Console.WriteLine("Unknown option.");
+                    break;
             }
         }
     }
