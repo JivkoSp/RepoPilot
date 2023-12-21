@@ -72,7 +72,7 @@ namespace RepoPilot.Core
             }
         }
 
-        private async Task RunPilotCommandAsync(string arguments)
+        public async Task RunPilotCommandAsync(string arguments)
         {
             if (string.IsNullOrEmpty(arguments))
             {
