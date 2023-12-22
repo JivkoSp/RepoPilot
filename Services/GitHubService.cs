@@ -1,11 +1,44 @@
 ﻿using Octokit;
 using RepoPilot.Managers;
+using System.Diagnostics;
 
 namespace RepoPilot.Services
 {
     internal sealed class GitHubService
     {
         private const string TokenFilePath = "github_token.txt";
+
+        public static string GetCurrentBranchName(string repoPath)
+        {
+            var process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "git",
+                    Arguments = "rev-parse --abbrev-ref HEAD",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    WorkingDirectory = repoPath 
+                }
+            };
+
+            process.Start();
+
+            string output = process.StandardOutput.ReadToEnd().Trim();
+
+            string error = process.StandardError.ReadToEnd().Trim();
+
+            process.WaitForExit();
+
+            if (!string.IsNullOrEmpty(error))
+            {
+                Console.WriteLine($"Error: {error}");
+            }
+
+            return output;
+        }
 
         public static string GetStoredGitHubToken()
         {
