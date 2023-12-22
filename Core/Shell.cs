@@ -72,6 +72,16 @@ namespace RepoPilot.Core
             }
         }
 
+        // Helper method to abbreviate the path if it's too long
+        private string AbbreviatePath(string path)
+        {
+            string[] parts = path.Split('\\');
+
+            if (parts.Length <= 4) return path;
+
+            return $"{parts[0]}\\{parts[1]}\\...\\{parts[parts.Length - 2]}\\{parts[parts.Length - 1]}";
+        }
+
         public async Task RunPilotCommandAsync(string arguments)
         {
             if (string.IsNullOrEmpty(arguments))
@@ -129,8 +139,21 @@ namespace RepoPilot.Core
 
             while (true)
             {
+                string currentBranch = GitHubService.GetCurrentBranchName(_currentDirectory);
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+
+                // Abbreviate the path if it's too long
+                string abbreviatedPath = AbbreviatePath(_currentDirectory);
+
                 // Display the current directory
-                Console.Write($"{_currentDirectory}> ");
+                Console.Write($"{abbreviatedPath} ");
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+
+                Console.Write($"({currentBranch})> ");
+
+                Console.ResetColor();
 
                 // Handle tab completion
                 var input = ConsoleUtils.ReadLineWithTabCompletion();
