@@ -1,5 +1,4 @@
-﻿
-using Octokit;
+﻿using Octokit;
 using RepoPilot.Services;
 using System.Diagnostics;
 
@@ -31,10 +30,14 @@ namespace RepoPilot.Utils
 
             process.WaitForExit();
 
-            Console.WriteLine(output);
+            if (!string.IsNullOrEmpty(output))
+            {
+                Console.WriteLine(output);
+            }
+
             if (!string.IsNullOrEmpty(error))
             {
-                Console.WriteLine($"Error: {error}");
+                Console.WriteLine(error); 
             }
         }
 
