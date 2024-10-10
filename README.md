@@ -20,7 +20,7 @@ In the following sections, you'll find detailed explanations about RepoPilot’s
     - [Overall design](Docs/intro-design.md)
     - [Technologies](Docs/intro-technologies.md)
 * **Design Decisions** 🧩
-    - [Shell Design](Docs/design-decision-service-architecture.md)
+    - [Shell Design](Docs/design-decision-shell.md)
     - [Git Command Integration](Docs/design-decision-authentication-and-authorization.md)
     - [GitHub Integration](Docs/design-decision-reverse-proxy.md)
     - [FileSystem Operations](Docs/design-decision-messaging.md)
