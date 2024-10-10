@@ -1,4 +1,4 @@
-# Capabilities
+# Capabilities 🚀
 
 RepoPilot provides a range of functionalities that streamline Git and GitHub repository management. Designed for ease of use and efficiency, RepoPilot's capabilities enable users to handle common Git operations while integrating GitHub 
 features into their workflow. Below are some of the core capabilities RepoPilot offers:
