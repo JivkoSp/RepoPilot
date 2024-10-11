@@ -22,9 +22,9 @@ Whether you are working on a single repository or handling multiple projects, th
   
     Setup Steps:
     
-    1. **Specify Repository Directories**: You can either allow RepoPilot to automatically detect repositories in common folders (e.g., ``` ~/Project ```s, ``` ~/Workspace ```) or manually specify directories;
-    2. **Initialization**: Once the directories are set, RepoPilot will initialize and display a list of all the detected repositories;
-    3. **Repository Caching**: RepoPilot will cache the discovered repositories for quick access, reducing the need for future scans.
+    - **Specify Repository Directories**: You can either allow RepoPilot to automatically detect repositories in common folders (e.g., ``` ~/Project ```s, ``` ~/Workspace ```) or manually specify directories;
+    - **Initialization**: Once the directories are set, RepoPilot will initialize and display a list of all the detected repositories;
+    - **Repository Caching**: RepoPilot will cache the discovered repositories for quick access, reducing the need for future scans.
     
     Example Configuration:
     ```html
