@@ -110,6 +110,7 @@ The tab completion feature allows you to quickly auto-complete commands, file pa
    - Works with user-defined scripts that accept flags.
      
 8. **Common Use Cases for Tab Completion**
+   
    8.1 **Long File Names**
    When working with deeply nested directories or files with long names, Tab Completion can save time and prevent errors.\
    - Example: Instead of typing:
