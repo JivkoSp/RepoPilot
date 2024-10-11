@@ -66,4 +66,4 @@ of filesystem tasks without leaving the shell. This section covers the key files
 
   **Creating Symbolic Links**:
   - ``` ln -s ```: Creates a symbolic (soft) link to a file or directory, providing a shortcut to access resources without duplicating them.
-     - Example: ``` ln -s /original/file.txt /shortcut/file.txt ``` creates a symbolic link named ``` file.txt ``` in the ``` /shortcut ``` directory, pointing to ``` /original/file.txt ```.
+      - Example: ``` ln -s /original/file.txt /shortcut/file.txt ``` creates a symbolic link named ``` file.txt ``` in the ``` /shortcut ``` directory, pointing to ``` /original/file.txt ```.
