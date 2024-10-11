@@ -27,8 +27,8 @@ In the following sections, you'll find detailed explanations about RepoPilot’s
     - [Tab Completion](Docs/design-decision-tab-completion.md)
     - [Command History](Docs/design-decision-command-history.md)
 * **Design** 🛠️
-    - [Local Repository Manager](Docs/design-search-service.md)
-    - [Shell](Docs/design-user-service.md)
+    - [Shell](Docs/design-shell.md)
+    - [Local Repository Manager](Docs/design-local-repository-manager.md)
     - [FileSystem Manager](Docs/design-topicarticle-service.md)
     - [Git Command Executor](Docs/design-privatehistory-service.md)
     - [Alias Manager](Docs/design-logcollection-service.md)
