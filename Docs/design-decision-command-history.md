@@ -93,15 +93,15 @@ By leveraging Command History, developers can enhance their workflow and minimiz
 
       When dealing with complex commands, such as those involving multiple options or long file paths, use **Ctrl + R** to search for key parts of the command instead of retyping them.
 
-     8.2 Editing Recalled Commands
+     8.2 **Editing Recalled Commands**
 
       When rerunning previous commands, consider editing parts of the command before execution. For example, changing file names or adjusting options without having to type the entire command again.
 
-     8.3 Clearing Sensitive Commands
+     8.3 **Clearing Sensitive Commands**
 
       For security reasons, consider clearing commands that involve sensitive information (like passwords in the command line) from your history.
 
-     8.4 Leverage Persistent History
+     8.4 **Leverage Persistent History**
   
       RepoPilot’s persistent history allows you to avoid manually recording frequently used commands. You can rely on the tool to store and retrieve them across sessions.
    
