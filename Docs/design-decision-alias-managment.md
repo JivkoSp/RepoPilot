@@ -105,20 +105,20 @@ This section covers how to set up, manage, and use aliases within RepoPilot to b
     ```
 6. **Alias Management Best Practices**
  
- To get the most out of aliases in RepoPilot, here are some best practices:
- 
- 6.1 Use Short, Descriptive Names
-   The purpose of an alias is to reduce typing, so keep alias names short and easy to remember. At the same time, choose descriptive names to ensure clarity.
-   
- 6.2 Group Similar Commands
-   Group related commands under a similar naming scheme. For example, all Git-related aliases can start with ``` g ```:
-   - ``` gs ``` for ``` git status ```
-   - ``` gc ``` for ``` git commit ```
-   - ``` gp ``` for ``` git push ```
-   - 
- 6.3 Avoid Overwriting Built-in Commands
-     Be cautious not to overwrite critical built-in shell commands (e.g., ``` ls ```, ```cd ```).
-     If you must create an alias for such a command, consider adding a prefix or suffix to avoid conflicts (e.g., ``` lscustom ``` instead of ``` ls ```).
-     
- 6.4 Document Your Aliases
-     Maintain a list of frequently used or complex aliases in your project documentation, especially for team environments. This helps other contributors understand and adopt the alias shortcuts you’ve defined.
+    To get the most out of aliases in RepoPilot, here are some best practices:
+    
+    6.1 Use Short, Descriptive Names
+      The purpose of an alias is to reduce typing, so keep alias names short and easy to remember. At the same time, choose descriptive names to ensure clarity.
+      
+    6.2 Group Similar Commands
+      Group related commands under a similar naming scheme. For example, all Git-related aliases can start with ``` g ```:
+      - ``` gs ``` for ``` git status ```
+      - ``` gc ``` for ``` git commit ```
+      - ``` gp ``` for ``` git push ```
+      - 
+    6.3 Avoid Overwriting Built-in Commands
+        Be cautious not to overwrite critical built-in shell commands (e.g., ``` ls ```, ```cd ```).
+        If you must create an alias for such a command, consider adding a prefix or suffix to avoid conflicts (e.g., ``` lscustom ``` instead of ``` ls ```).
+        
+    6.4 Document Your Aliases
+        Maintain a list of frequently used or complex aliases in your project documentation, especially for team environments. This helps other contributors understand and adopt the alias shortcuts you’ve defined.
