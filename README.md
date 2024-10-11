@@ -21,12 +21,11 @@ In the following sections, you'll find detailed explanations about RepoPilot’s
     - [Technologies](Docs/intro-technologies.md)
 * **Design Decisions** 🧩
     - [Shell Design](Docs/design-decision-shell.md)
-    - [Git Command Integration](Docs/design-decision-authentication-and-authorization.md)
-    - [GitHub Integration](Docs/design-decision-reverse-proxy.md)
-    - [FileSystem Operations](Docs/design-decision-messaging.md)
-    - [Alias Management](Docs/design-decision-containerization.md)
-    - [Tab Completion](Docs/design-decision-fault-handling.md)
-    - [Command History](Docs/design-decision-data-storage.md)
+    - [Git Command Integration](Docs/design-decision-git-command-integration.md)
+    - [FileSystem Operations](Docs/design-decision-filesystem-operations.md)
+    - [Alias Management](Docs/design-decision-alias-managment.md)
+    - [Tab Completion](Docs/design-decision-tab-completion.md)
+    - [Command History](Docs/design-decision-command-history.md)
 * **Design** 🛠️
     - [Local Repository Manager](Docs/design-search-service.md)
     - [Shell](Docs/design-user-service.md)
