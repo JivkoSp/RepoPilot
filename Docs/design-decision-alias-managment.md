@@ -115,7 +115,7 @@ This section covers how to set up, manage, and use aliases within RepoPilot to b
       - ``` gs ``` for ``` git status ```
       - ``` gc ``` for ``` git commit ```
       - ``` gp ``` for ``` git push ```
-      - 
+   
     6.3 Avoid Overwriting Built-in Commands
         Be cautious not to overwrite critical built-in shell commands (e.g., ``` ls ```, ```cd ```).
         If you must create an alias for such a command, consider adding a prefix or suffix to avoid conflicts (e.g., ``` lscustom ``` instead of ``` ls ```).
