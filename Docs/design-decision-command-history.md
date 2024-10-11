@@ -91,7 +91,7 @@ By leveraging Command History, developers can enhance their workflow and minimiz
 
      8.1 **Using Reverse Search for Long Commands**
 
-     When dealing with complex commands, such as those involving multiple options or long file paths, use **Ctrl + R** to search for key parts of the command instead of retyping them.
+      When dealing with complex commands, such as those involving multiple options or long file paths, use **Ctrl + R** to search for key parts of the command instead of retyping them.
 
      8.2 Editing Recalled Commands
 
