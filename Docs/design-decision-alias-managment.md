@@ -4,6 +4,7 @@ RepoPilot provides a highly customizable alias management system, allowing users
 This section covers how to set up, manage, and use aliases within RepoPilot to boost productivity and reduce repetitive typing.
 
 1. **What Are Aliases?**
+
    Aliases are shorthand representations of longer commands. By creating aliases, users can run complex or commonly used commands with simple, custom-defined keywords. RepoPilot makes it easy to create, edit, and manage aliases,
    enabling developers to personalize their shell environment to fit their needs.
 
@@ -11,6 +12,7 @@ This section covers how to set up, manage, and use aliases within RepoPilot to b
    - Instead of typing ``` git status ``` every time, an alias like ``` gs ``` can be created to perform the same function;
    - An alias like ``` deploy ``` could combine multiple deployment-related commands into a single shortcut.
 2. **Creating Aliases**
+
    RepoPilot allows users to create aliases directly in its shell environment. Users can define aliases for any command, whether it's a simple single-line command or a complex multi-step operation.
 
    Syntax:
@@ -32,6 +34,7 @@ This section covers how to set up, manage, and use aliases within RepoPilot to b
      To make an alias permanent, it can be added to the ``` .bashrc ```, ``` .zshrc ```, or other appropriate shell configuration files.
      RepoPilot offers an easy way to manage these configurations by automatically suggesting where to save your aliases when you define them.
 3. **Viewing Aliases**
+
    RepoPilot provides a convenient way to view all defined aliases in the system. This helps users keep track of the aliases they have set up and avoid potential conflicts between different alias names.
    - Command:
      ```html
@@ -45,6 +48,7 @@ This section covers how to set up, manage, and use aliases within RepoPilot to b
      ```
    The above output shows all currently active aliases along with the commands they represent.
 4. **Editing or Removing Aliases**
+
    Over time, users may want to update or remove existing aliases. RepoPilot makes this process simple, allowing users to modify their workflow as needed.
 
    - Unsetting an Alias:
@@ -66,7 +70,8 @@ This section covers how to set up, manage, and use aliases within RepoPilot to b
      ```
      This updates the ``` deploy ``` alias to exclude the ``` npm run deploy ``` step.
 5. **Common Use Cases for Aliases**
-   5.1 **Git Workflow Shortcuts**
+
+    5.1 **Git Workflow Shortcuts**
    Developers frequently use Git commands during the development process. Aliases can simplify common Git operations, saving time and reducing the amount of typing required.
    - Git Status:
      ```html
@@ -99,6 +104,7 @@ This section covers how to set up, manage, and use aliases within RepoPilot to b
       alias push_deploy='git push origin main && npm run deploy'
     ```
 6. **Alias Management Best Practices**
+ 
  To get the most out of aliases in RepoPilot, here are some best practices:
  6.1 Use Short, Descriptive Names
    The purpose of an alias is to reduce typing, so keep alias names short and easy to remember. At the same time, choose descriptive names to ensure clarity.
