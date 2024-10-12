@@ -101,23 +101,23 @@ that cater to both beginner and experienced developers.
    
 5. **Customization and Personalization**
 
-  RepoPilot allows users to personalize their interaction with the system by defining custom aliases, adjusting shell behavior, and storing their preferences across sessions.
+   RepoPilot allows users to personalize their interaction with the system by defining custom aliases, adjusting shell behavior, and storing their preferences across sessions.
 
-  **Alias Suggestions and Creation**
+   **Alias Suggestions and Creation**
 
-  RepoPilot actively suggests alias creation for frequently used commands, offering a streamlined way to save time and reduce repetitive typing. 
-  Users can create aliases on the fly, with prompts guiding them through the process.
+   RepoPilot actively suggests alias creation for frequently used commands, offering a streamlined way to save time and reduce repetitive typing. 
+   Users can create aliases on the fly, with prompts guiding them through the process.
 
-  Example:
-  ```html
+   Example:
+   ```html
     It looks like you frequently use `git pull origin main`. Would you like to create an alias for this command? (yes/no)
-  ```
-  Upon confirmation, RepoPilot helps the user define and store the alias in the configuration file for future use.
+   ```
+   Upon confirmation, RepoPilot helps the user define and store the alias in the configuration file for future use.
   
-  **Persistent Configuration**
+   **Persistent Configuration**
 
-  Users can customize RepoPilot by configuring their environment and preferences. 
-  These configurations (e.g., default branch names, alias management) are stored persistently in the user’s shell profile, ensuring the settings are retained across sessions.
+   Users can customize RepoPilot by configuring their environment and preferences. 
+   These configurations (e.g., default branch names, alias management) are stored persistently in the user’s shell profile, ensuring the settings are retained across sessions.
 
 6. **Advanced Interaction Features**
 
