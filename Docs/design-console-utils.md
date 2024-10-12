@@ -123,6 +123,7 @@ console and how they are integrated into the design.
 
    RepoPilot offers optional reminders or warnings for actions that may have been overlooked, such as uncommitted changes or unstaged files before a push.
    - **Reminder for Uncommitted Changes**: If a user attempts to push changes without committing, RepoPilot reminds them to commit first.
+     
      Example:
      ```html
       [Warning] You have uncommitted changes. Would you like to commit them before pushing? (yes/no)
