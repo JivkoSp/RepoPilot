@@ -6,7 +6,7 @@ This section details the internal design and architecture of the Alias Manager, 
 
 1. **Design Objectives**
 
-    The key objectives behind the design of the Alias Manager are:
+   The key objectives behind the design of the Alias Manager are:
     - **User Customization**: Provide users with the ability to easily define, edit, and remove aliases, enhancing the shell's flexibility;
     - **Efficiency**: Optimize command execution by reducing repetitive typing and consolidating frequently used command sequences into short, memorable shortcuts;
     - **Seamless Shell Integration**: Ensure that aliases work smoothly within the shell, without interfering with existing shell commands or configurations;
