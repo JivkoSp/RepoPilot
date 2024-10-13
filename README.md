@@ -1,8 +1,8 @@
-## RepoPilot Documentation 📘
-
 <p align="center">
     <img src="https://github.com/JivkoSp/RepoPilot/blob/master/Assets/logo.PNG" alt="Logo" width="600">
 </p>
+
+## RepoPilot Documentation 📘
 
 Welcome to the official documentation for RepoPilot, a powerful command-line tool designed to enhance your workflow by making Git and GitHub repository management easier, faster, and more intuitive. Whether you're a developer, a DevOps engineer, 
 or a project manager, RepoPilot offers a simple yet comprehensive solution for handling complex version control tasks.
