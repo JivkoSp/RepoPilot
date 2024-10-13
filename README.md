@@ -35,10 +35,10 @@ In the following sections, you'll find detailed explanations about RepoPilot’s
     - [FileSystem Manager](Docs/design-filesystem-manager.md)
     - [Git Command Executor](Docs/design-git-command-executor.md)
 * **Project Structure** 📂
-    - [Local Repository Manager Project Structure](Docs/project-structure-user-service.md)
-    - [Shell Project Structure](Docs/project-structure-topic-article-service.md)
-    - [FileSystem Manager Project Structure](Docs/project-structure-private-history-service.md)
-    - [GitHub Service Project Structure](Docs/project-structure-public-history-service.md)
+    - [Shell](Docs/project-structure-shell.md)
+    - [Local Repository Manager](Docs/project-structure-local-repository-manager.md)
+    - [FileSystem Manager](Docs/project-structure-filesystem-manager.md)
+    - [GitHub Service](Docs/project-structure-github-service.md)
 * **Usage** 🚀
    - [How to Run RepoPilot](Docs/usage-how-to-run.md)
    - [Shell Commands](Docs/usage-how-to-run.md)
