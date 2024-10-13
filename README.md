@@ -1,3 +1,5 @@
+## RepoPilot Documentation 📘
+
 <p align="center">
     <img src="https://github.com/JivkoSp/RepoPilot/blob/master/Assets/logo.PNG" alt="Logo" width="600">
 </p>
