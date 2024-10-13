@@ -4,6 +4,12 @@
 
 ## RepoPilot Documentation 📘
 
+## ⚠️ Important Notice
+
+**Be aware that this project is under development, has some bugs, and some of the features mentioned in the documentation are not yet finished.**
+
+---
+
 Welcome to the official documentation for RepoPilot, a powerful command-line tool designed to enhance your workflow by making Git and GitHub repository management easier, faster, and more intuitive. Whether you're a developer, a DevOps engineer, 
 or a project manager, RepoPilot offers a simple yet comprehensive solution for handling complex version control tasks.
 
