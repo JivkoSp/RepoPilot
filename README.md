@@ -20,7 +20,7 @@ Whether you're setting up a new repository, managing branches, or committing cha
 
 - **User-friendly Interface**: A streamlined command structure to easily manage repositories and branches;
 - **GitHub Integration**: Automatically interact with GitHub for repository creation and branch management;
-- **Enhanced Workflow**: Features like command history, aliases, and shell-like environment to boost productivity;
+- **Enhanced Workflow**: Features like command history, aliases, and shell-like environment to boost productivity.
   
 In the following sections, you'll find detailed explanations about RepoPilot’s purpose, design decisions, structure, and usage.
 
