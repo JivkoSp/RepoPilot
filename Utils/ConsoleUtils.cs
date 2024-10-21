@@ -84,7 +84,7 @@ namespace RepoPilot.Utils
             Console.WriteLine("Type 'help' for commands or 'exit' to quit.\n");
         }
 
-        public static string ReadLineWithTabCompletion()
+        public static string ReadLineWithTabCompletion(string currentDirectory)
         {
             var input = new StringBuilder();
             var tabCompletionOptions = new List<string>();
@@ -96,6 +96,7 @@ namespace RepoPilot.Utils
             while (true)
             {
                 var key = Console.ReadKey(intercept: true);
+
                 if (key.Key == ConsoleKey.Enter)
                 {
                     Console.WriteLine();
@@ -112,7 +113,7 @@ namespace RepoPilot.Utils
                     if (tabIndex == -1)
                     {
                         string currentInput = input.ToString();
-                        tabCompletionOptions = GetTabCompletionOptions(currentInput);
+                        tabCompletionOptions = GetTabCompletionOptions(currentInput, currentDirectory);
                         tabIndex = 0;
                     }
                     else
@@ -178,7 +179,7 @@ namespace RepoPilot.Utils
             }
         }
 
-        public static List<string> GetTabCompletionOptions(string currentInput)
+        public static List<string> GetTabCompletionOptions(string currentInput, string currentDirectory)
         {
             var options = new List<string>();
             string[] parts = currentInput.Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -189,22 +190,35 @@ namespace RepoPilot.Utils
             }
             else if (parts.Length == 1)
             {
+                // If only the command is present, provide command and directory/file suggestions
+
                 options.AddRange(GetAllCommands().Where(c => c.StartsWith(parts[0], StringComparison.OrdinalIgnoreCase)));
-                options.AddRange(Directory.GetFileSystemEntries(Directory.GetCurrentDirectory())
+                options.AddRange(Directory.GetFileSystemEntries(currentDirectory)
                 .Where(f => Path.GetFileName(f).StartsWith(parts[0], StringComparison.OrdinalIgnoreCase))
                 .Select(f => Path.GetFileName(f)));
             }
             else
             {
+                // Handle commands like "cd" where we only want directories
+                string command = parts[0].ToLower();
                 string lastPart = parts[^1];
-                string directoryPath = parts.Length > 1 ? string.Join(' ', parts.Skip(1).Reverse().Skip(1).Reverse()) : Directory.GetCurrentDirectory();
-                directoryPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), directoryPath));
-                if (Directory.Exists(directoryPath))
+
+                // Determine if lastPart is a full or relative path
+                string? directoryPath;
+                if (Path.IsPathRooted(lastPart))
                 {
-                    options.AddRange(Directory.GetFileSystemEntries(directoryPath)
-                        .Where(f => Path.GetFileName(f).StartsWith(lastPart, StringComparison.OrdinalIgnoreCase))
-                        .Select(f => $"{parts[0]} {string.Join(' ', parts.Skip(1).Reverse().Skip(1).Reverse())} {Path.GetFileName(f)}"));
+                    // If the lastPart is an absolute path, use it as is
+                    directoryPath = Path.GetDirectoryName(lastPart) ?? Path.GetPathRoot(lastPart);
                 }
+                else
+                {
+                    // Otherwise, combine with the current directory
+                    directoryPath = Path.Combine(currentDirectory, Path.GetDirectoryName(lastPart) ?? string.Empty);
+                }
+          
+                options.AddRange(Directory.GetFileSystemEntries(directoryPath)
+                    .Where(f => Path.GetFileName(f).StartsWith(Path.GetFileName(lastPart), StringComparison.OrdinalIgnoreCase))
+                    .Select(f => $"{command} {Path.Combine(directoryPath, Path.GetFileName(f))}"));
             }
 
             return options;
