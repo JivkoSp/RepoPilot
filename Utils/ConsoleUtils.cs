@@ -226,7 +226,7 @@ namespace RepoPilot.Utils
 
         private static List<string> GetAllCommands()
         {
-            return new List<string> { "ls", "cd", "mkdir", "look", "clear", "git", "alias", "help", "exit" };
+            return new List<string> { "ls", "cd", "mkdir", "look", "clear", "git", "pilot", "alias", "help", "exit" };
         }
 
         private static void ClearCurrentLine(int length)
