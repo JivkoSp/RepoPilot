@@ -1,4 +1,14 @@
+<p align="center">
+    <img src="https://github.com/JivkoSp/RepoPilot/blob/master/Assets/logo.PNG" alt="Logo" width="600">
+</p>
+
 ## RepoPilot Documentation 📘
+
+## ⚠️ Important Notice
+
+**Be aware that this project is under development, has some bugs, and some of the features mentioned in the documentation are not yet finished.**
+
+---
 
 Welcome to the official documentation for RepoPilot, a powerful command-line tool designed to enhance your workflow by making Git and GitHub repository management easier, faster, and more intuitive. Whether you're a developer, a DevOps engineer, 
 or a project manager, RepoPilot offers a simple yet comprehensive solution for handling complex version control tasks.
@@ -10,7 +20,7 @@ Whether you're setting up a new repository, managing branches, or committing cha
 
 - **User-friendly Interface**: A streamlined command structure to easily manage repositories and branches;
 - **GitHub Integration**: Automatically interact with GitHub for repository creation and branch management;
-- **Enhanced Workflow**: Features like command history, aliases, and shell-like environment to boost productivity;
+- **Enhanced Workflow**: Features like command history, aliases, and shell-like environment to boost productivity.
   
 In the following sections, you'll find detailed explanations about RepoPilot’s purpose, design decisions, structure, and usage.
 
