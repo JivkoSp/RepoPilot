@@ -156,7 +156,7 @@ namespace RepoPilot.Core
                 Console.ResetColor();
 
                 // Handle tab completion
-                var input = ConsoleUtils.ReadLineWithTabCompletion();
+                var input = ConsoleUtils.ReadLineWithTabCompletion(_currentDirectory);
 
                 if (string.IsNullOrWhiteSpace(input)) continue;
 
