@@ -195,10 +195,6 @@ namespace RepoPilot.Core
                             Console.WriteLine("Usage: look <file name>");
                         }
                         break;
-                    case "clear":
-                        Console.Clear();
-                        ConsoleUtils.PrintBanner();
-                        break;
                     case "git":
                         RunExternalCommand("git", string.Join(' ', commandArgs.Skip(1)));
                         break;
@@ -210,6 +206,10 @@ namespace RepoPilot.Core
                         break;
                     case "help":
                        UserInteraction.DisplayHelp();
+                        break;
+                    case "clear":
+                        Console.Clear();
+                        ConsoleUtils.PrintBanner();
                         break;
                     case "exit":
                         SaveCommandHistory();
