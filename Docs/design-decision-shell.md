@@ -23,6 +23,7 @@ The shell is designed with simplicity and flexibility in mind, allowing users to
        - ``` ls ``` – Lists the contents of the current directory;
        - ``` cd ``` – Changes the working directory;
        - ``` mkdir ``` – Creates a new directory;
+       - ``` rmdir ``` – Removes a directory;
        - ``` look ``` – Provides detailed information about a file, such as size, last access time, and whether it's executable.
    - Abbreviated Paths: When displaying the current directory, the shell abbreviates long paths, making them more readable while still maintaining context for the user.
 7. **Asynchronous GitHub Integration**
