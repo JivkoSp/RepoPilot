@@ -210,6 +210,9 @@ namespace RepoPilot.Core
                             Console.WriteLine("Usage: touch <file>");
                         }
                         break;
+                    case "cp":
+                        FileSystemManager.Copy(commandArgs); 
+                        break;
                     case "look":
                         if (commandArgs.Length > 1)
                         {
