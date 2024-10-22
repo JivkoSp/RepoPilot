@@ -199,6 +199,17 @@ namespace RepoPilot.Core
                     case "pwd":
                         FileSystemManager.PrintWorkingDirectory();
                         break;
+                    case "touch":
+                        if (commandArgs.Length > 1)
+                        {
+                            string filePath = commandArgs[1];
+                            FileSystemManager.TouchFile(filePath);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Usage: touch <file>");
+                        }
+                        break;
                     case "look":
                         if (commandArgs.Length > 1)
                         {
