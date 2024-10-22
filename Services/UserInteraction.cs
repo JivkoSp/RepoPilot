@@ -15,6 +15,8 @@ namespace RepoPilot.Services
             Console.WriteLine("  ls [path]              - List directory contents");
             Console.WriteLine("  cd <directory>         - Change directory");
             Console.WriteLine("  mkdir <dir>            - Create a new directory");
+            Console.WriteLine("  rmdir <dir>            - Remove an empty directory");
+            Console.WriteLine("  pwd                    - Print working directory");
             Console.WriteLine("  look <file>            - Display file information");
             Console.WriteLine("  git <args>             - Run git commands");
             Console.WriteLine("  pilot <args>             - Run pilot commands");
