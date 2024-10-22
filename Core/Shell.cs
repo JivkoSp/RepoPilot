@@ -185,6 +185,20 @@ namespace RepoPilot.Core
                     case "mkdir":
                         FileSystemManager.MakeDirectory(_currentDirectory, commandArgs);
                         break;
+                    case "rmdir":
+                        if (commandArgs.Length > 1)
+                        {
+                            string dirPath = commandArgs[1];
+                            FileSystemManager.RemoveDirectory(dirPath);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Usage: rmdir <directory>");
+                        }
+                        break;
+                    case "pwd":
+                        FileSystemManager.PrintWorkingDirectory();
+                        break;
                     case "look":
                         if (commandArgs.Length > 1)
                         {
