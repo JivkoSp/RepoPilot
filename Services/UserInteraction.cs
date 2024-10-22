@@ -18,6 +18,7 @@ namespace RepoPilot.Services
             Console.WriteLine("  rmdir <dir>            - Remove an empty directory");
             Console.WriteLine("  pwd                    - Print working directory");
             Console.WriteLine("  touch <file>           - Create an empty file or update its timestamp");
+            Console.WriteLine("  cp [-r] <source> <dest> - Copy files or directories (use -r for directories)");
             Console.WriteLine("  look <file>            - Display file information");
             Console.WriteLine("  git <args>             - Run git commands");
             Console.WriteLine("  pilot <args>             - Run pilot commands");
