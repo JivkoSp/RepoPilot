@@ -21,8 +21,10 @@ The shell is designed with simplicity and flexibility in mind, allowing users to
 6. **Directory Management**
    - RepoPilot includes a set of commands for **navigating the file system** and managing directories. These commands include:
        - ``` ls ``` – Lists the contents of the current directory;
+       - ``` pwd ``` – Displays the full path of the current working directory;
        - ``` cd ``` – Changes the working directory;
        - ``` mkdir ``` – Creates a new directory;
+       - ``` rmdir ``` – Removes a directory;
        - ``` look ``` – Provides detailed information about a file, such as size, last access time, and whether it's executable.
    - Abbreviated Paths: When displaying the current directory, the shell abbreviates long paths, making them more readable while still maintaining context for the user.
 7. **Asynchronous GitHub Integration**
