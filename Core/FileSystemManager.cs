@@ -100,6 +100,31 @@ namespace RepoPilot.Core
             Console.WriteLine($"Current directory: {currentDirectory}");
         }
 
+        public static void TouchFile(string filePath)
+        {
+            try
+            {
+                if (File.Exists(filePath))
+                {
+                    // If the file exists, update its last write time to the current time
+                    File.SetLastWriteTime(filePath, DateTime.Now);
+                    Console.WriteLine($"File '{filePath}' timestamp updated.");
+                }
+                else
+                {
+                    // If the file doesn't exist, create an empty file
+                    using (File.Create(filePath))
+                    {
+                        Console.WriteLine($"File '{filePath}' created.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: Failed to touch file '{filePath}'. {ex.Message}");
+            }
+        }
+
         public static void ChangeDirectory(ref string currentDirectory, string[] args)
         {
             if (args.Length < 2)
