@@ -193,6 +193,96 @@ namespace RepoPilot.Core
             }
         }
 
+        // Method to copy a single file
+        public static void CopyFile(string sourceFile, string destFile)
+        {
+            try
+            {
+                // Ensure destination directory exists
+                string? destDir = Path.GetDirectoryName(destFile);
+
+                if (destDir != null && !Directory.Exists(destDir))
+                {
+                    Directory.CreateDirectory(destDir);
+                }
+
+                // Copy the file to the destination (overwrite if it exists)
+                File.Copy(sourceFile, destFile, true);
+
+                Console.WriteLine($"File '{sourceFile}' copied to '{destFile}'.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: Failed to copy file '{sourceFile}'. {ex.Message}");
+            }
+        }
+
+        // Method to copy a directory and its contents recursively
+        public static void CopyDirectory(string sourceDir, string destDir)
+        {
+            try
+            {
+                if (!Directory.Exists(destDir))
+                {
+                    Directory.CreateDirectory(destDir);
+                }
+
+                // Copy all files from the source directory to the destination directory
+                foreach (var file in Directory.GetFiles(sourceDir))
+                {
+                    string destFile = Path.Combine(destDir, Path.GetFileName(file));
+                    CopyFile(file, destFile);
+                }
+
+                // Recursively copy subdirectories
+                foreach (var directory in Directory.GetDirectories(sourceDir))
+                {
+                    string destSubDir = Path.Combine(destDir, Path.GetFileName(directory));
+                    CopyDirectory(directory, destSubDir);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: Failed to copy directory '{sourceDir}'. {ex.Message}");
+            }
+        }
+
+        // Main method to handle cp command (supports files and directories with the -r option)
+        public static void Copy(string[] args)
+        {
+            if (args.Length < 3)
+            {
+                Console.WriteLine("Usage: cp [-r] <source> <destination>");
+                return;
+            }
+
+            bool isRecursive = args[1] == "-r";
+            string sourcePath = isRecursive ? args[2] : args[1];
+            string destPath = isRecursive ? args[3] : args[2];
+
+            if (File.Exists(sourcePath))
+            {
+                // Handle file copying
+                CopyFile(sourcePath, destPath);
+            }
+            else if (Directory.Exists(sourcePath))
+            {
+                // Handle directory copying (must use -r for recursive)
+                if (isRecursive)
+                {
+                    CopyDirectory(sourcePath, destPath);
+                }
+                else
+                {
+                    Console.WriteLine("Error: Source is a directory. Use the -r option to copy directories.");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Error: Source '{sourcePath}' does not exist.");
+            }
+        }
+
         public static void LookCommand(string fileName)
         {
             if (!File.Exists(fileName))
