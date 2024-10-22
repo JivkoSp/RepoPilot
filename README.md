@@ -6,7 +6,7 @@
 
 ## ⚠️ Important Notice
 
-**Be aware that this project is under development, has some bugs, and some of the features mentioned in the documentation are not yet finished.**
+**Be aware that this project is under development, and some of the features mentioned in the documentation are not yet finished.**
 
 ---
 
