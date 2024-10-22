@@ -144,6 +144,30 @@ namespace RepoPilot.Core
             }
         }
 
+        public static void RemoveDirectory(string dirPath)
+        {
+            if (Directory.Exists(dirPath))
+            {
+                try
+                {
+                    Directory.Delete(dirPath, recursive: false);
+                    Console.WriteLine($"Directory '{dirPath}' removed successfully.");
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine($"Error: The directory '{dirPath}' is not empty.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: Failed to remove directory '{dirPath}'. {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Error: Directory '{dirPath}' does not exist.");
+            }
+        }
+
         public static void LookCommand(string fileName)
         {
             if (!File.Exists(fileName))
