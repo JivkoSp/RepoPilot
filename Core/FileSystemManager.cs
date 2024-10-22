@@ -283,6 +283,98 @@ namespace RepoPilot.Core
             }
         }
 
+        public static void Rm(string[] args)
+        {
+            if (args.Length < 2)
+            {
+                Console.WriteLine("Usage: rm [-rf] <file/directory>");
+                return;
+            }
+
+            bool recursive = false;
+            bool force = false;
+            List<string> paths = new List<string>();
+
+            // Parse flags and paths
+            for (int i = 1; i < args.Length; i++)
+            {
+                if (args[i] == "-r")
+                {
+                    recursive = true;
+                }
+                else if (args[i] == "-f")
+                {
+                    force = true;
+                }
+                else
+                {
+                    paths.Add(args[i]);  // Collect file or directory paths
+                }
+            }
+
+            // Process each path
+            foreach (var path in paths)
+            {
+                string fullPath = Path.Combine(Directory.GetCurrentDirectory(), path);
+
+                // Check if it's a file or a directory
+                if (File.Exists(fullPath))
+                {
+                    // It's a file
+                    if (force || ConfirmDeletion($"Delete file '{path}'?"))
+                    {
+                        try
+                        {
+                            File.Delete(fullPath);
+                            Console.WriteLine($"Deleted file: {path}");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error deleting file '{path}': {ex.Message}");
+                        }
+                    }
+                }
+                else if (Directory.Exists(fullPath))
+                {
+                    // It's a directory
+                    if (recursive)
+                    {
+                        // Recursive deletion
+                        if (force || ConfirmDeletion($"Delete directory '{path}' and all its contents?"))
+                        {
+                            try
+                            {
+                                Directory.Delete(fullPath, true);
+                                Console.WriteLine($"Deleted directory: {path}");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Error deleting directory '{path}': {ex.Message}");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Deleting directory without recursive flag
+                        Console.WriteLine($"Error: '{path}' is a directory. Use -r to delete it recursively.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Error: '{path}' does not exist.");
+                }
+            }
+        }
+
+        // Helper function to confirm deletion with the user
+        private static bool ConfirmDeletion(string message)
+        {
+            Console.Write($"{message} (y/n): ");
+            var key = Console.ReadKey();
+            Console.WriteLine();  // Move to next line after key press
+            return key.Key == ConsoleKey.Y;
+        }
+
         public static void LookCommand(string fileName)
         {
             if (!File.Exists(fileName))
