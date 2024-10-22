@@ -93,6 +93,13 @@ namespace RepoPilot.Core
             }
         }
 
+        public static void PrintWorkingDirectory()
+        {
+            string currentDirectory = Directory.GetCurrentDirectory();
+
+            Console.WriteLine($"Current directory: {currentDirectory}");
+        }
+
         public static void ChangeDirectory(ref string currentDirectory, string[] args)
         {
             if (args.Length < 2)
